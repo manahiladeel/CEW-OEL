@@ -1,0 +1,42 @@
+Date: 11-11-2024
+Average CO: 0.10
+Average NO2: 0.02
+Average O3: 0.03
+Average SO2: 0.01
+Average PM2.5: 5.50
+Average PM10: 6.60
+
+Date: 11-11-2024
+Average CO: 0.10
+Average NO2: 0.02
+Average O3: 0.03
+Average SO2: 0.01
+Average PM2.5: 5.50
+Average PM10: 6.60
+
+Date: 11-11-2024
+Average CO: 0.10
+Average NO2: 0.02
+Average O3: 0.03
+Average SO2: 0.01
+Average PM2.5: 5.50
+Average PM10: 6.60
+
+Date: 12-11-2024
+Average CO: 0.10
+Average NO2: 0.02
+Average O3: 0.03
+Average SO2: 0.01
+Average PM2.5: 5.50
+Average PM10: 6.60
+
+Date: 12-11-2024
+Average CO: 0.10
+Average NO2: 0.02
+Average O3: 0.03
+Average SO2: 0.01
+Average PM2.5: 5.50
+Average PM10: 6.60
+Average US-EPA-INDEX: 2.00
+Average GB-DEFRA-INDEX: 3.00
+
