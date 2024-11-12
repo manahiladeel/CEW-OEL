@@ -1,7 +1,7 @@
 #include "data_handler.h"
 
 void write_api_data_to_file(const char *filename, const char *data) {
-    FILE *file = fopen(filename, "a"); // Open file in write mode
+    FILE *file = fopen(filename, "a"); // Open file in append mode
     if (!file) {
         perror("Error opening file for writing");
         return;

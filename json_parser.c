@@ -1,8 +1,9 @@
+#include "json_parser.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
-#include "json_parser.h"
+#include "notification.h"  // Include the notification header to use the notification function
+
 
 // Function to extract a value by key from a JSON line
 char *extract_json_value(const char *json, const char *key) {
@@ -26,16 +27,21 @@ char *extract_json_value(const char *json, const char *key) {
     return NULL;
 }
 
-void compute_daily_averages(const char *raw_filename, const char *processed_filename, const char *date) {
+#include "notification.h"
+
+// Modified compute_daily_averages function
+void compute_daily_averages(const char *raw_filename, const char *processed_filename, const char *date, const char *email) {
     FILE *file = fopen(raw_filename, "r");
     if (!file) {
         fprintf(stderr, "Error opening file %s\n", raw_filename);
         return;
     }
 
-    double total_co = 0, total_no2 = 0, total_o3 = 0, total_so2 = 0, total_pm2_5 = 0, total_pm10 = 0,total_gb_index=0,total_epa =0;
+    double total_co = 0, total_no2 = 0, total_o3 = 0, total_so2 = 0, total_pm2_5 = 0, total_pm10 = 0,
+           total_gb_index = 0, total_epa = 0;
     int count = 0;
     char line[1024];
+    char email_body[2048] = "";  // To store the body of the email
 
     while (fgets(line, sizeof(line), file)) {
         char *json_date = extract_json_value(line, "\"date\"");
@@ -74,23 +80,34 @@ void compute_daily_averages(const char *raw_filename, const char *processed_file
     fprintf(output_file, "Average PM10: %.2f\n", total_pm10 / count);
     fprintf(output_file, "Average US-EPA-INDEX: %.2f\n", total_epa / count);
     fprintf(output_file, "Average GB-DEFRA-INDEX: %.2f\n", total_gb_index / count);
-    fprintf(output_file,"\n");
+    fprintf(output_file, "\n");
     fclose(output_file);
-    printf("Count: %d\n",count);
-    printf("Daily averages for %s have been computed and written to %s.\n", date, processed_filename);
-}
 
-void read_json_data(const char *filename) {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        fprintf(stderr, "Error opening file %s\n", filename);
-        return;
+    // Generate the email body
+    snprintf(email_body, sizeof(email_body),
+             "Daily Averages for %s:\n\n"
+             "Average CO: %.2f\n"
+             "Average NO2: %.2f\n"
+             "Average O3: %.2f\n"
+             "Average SO2: %.2f\n"
+             "Average PM2.5: %.2f\n"
+             "Average PM10: %.2f\n"
+             "Average US-EPA-INDEX: %.2f\n"
+             "Average GB-DEFRA-INDEX: %.2f\n",
+             date, total_co / count, total_no2 / count, total_o3 / count, total_so2 / count,
+             total_pm2_5 / count, total_pm10 / count, total_epa / count, total_gb_index / count);
+
+    // Send the email with the daily averages
+    send_email_with_daily_averages(email, email_body);
+
+    // Check if the indexes exceed thresholds and trigger a notification
+    if (total_gb_index / count > 1.0) {
+        trigger_system_notification("Warning: GB Index is high!");
+    }
+    if (total_epa / count > 2.0) {
+        trigger_system_notification("Warning: EPA Index is high!");
     }
 
-    char line[1024];
-    while (fgets(line, sizeof(line), file)) {
-        printf("%s", line); // Print each JSON entry
-    }
-
-    fclose(file);
+    printf("Count: %d\n", count);
+    printf("Daily averages for %s have been computed, written to %s, and email has been sent.\n", date, processed_filename);
 }

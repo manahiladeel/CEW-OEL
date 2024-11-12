@@ -1,9 +1,9 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -lcurl
+CFLAGS = -Wall
 
 # Source files
-SRCS = main.c network.c json_parser.c
+SRCS = main.c data_handler.c json_parser.c notification.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
@@ -16,7 +16,7 @@ all: $(TARGET)
 
 # Link the object files to create the executable
 $(TARGET): $(OBJS)
-	$(CC) $(OBJS) -o $(TARGET) $(CFLAGS)
+	$(CC) $(OBJS) -o $(TARGET) $(CFLAGS) -lcurl  
 
 # Compile source files to object files
 %.o: %.c
