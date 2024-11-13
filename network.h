@@ -1,9 +1,19 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-void save_json_data(const char *filename, const char *location_name, const char *region,
-                    const char *country, const char *co, const char *no2, const char *o3,
-                    const char *so2, const char *pm2_5, const char *pm10,
-                    const char *us_epa_index, const char *gb_defra_index);
+#include <stddef.h>
 
-#endif
+struct Memory {
+    char *response;
+    size_t size;
+};
+
+static size_t write_callback(void *data, size_t size, size_t nmemb, void *userp);
+
+char* fetch_url(const char *url);
+
+
+// Declaration for fetch_and_save_weather_data
+void fetch_and_save_weather_data(const char *url, const char *filename);
+
+#endif // NETWORK_H

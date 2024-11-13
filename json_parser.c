@@ -5,7 +5,6 @@
 #include "notification.h"  // Include the notification header to use the notification function
 
 
-// Function to extract a value by key from a JSON line
 char *extract_json_value(const char *json, const char *key) {
     char *found = strstr(json, key);
     if (found) {
@@ -27,7 +26,6 @@ char *extract_json_value(const char *json, const char *key) {
     return NULL;
 }
 
-#include "notification.h"
 
 // Modified compute_daily_averages function
 void compute_daily_averages(const char *raw_filename, const char *processed_filename, const char *date, const char *email) {
