@@ -98,3 +98,13 @@ Average PM10: 141.38
 Average US-EPA-INDEX: 4.00
 Average GB-DEFRA-INDEX: 10.00
 
+Date: 13-11-2024
+Average CO: 2350.12
+Average NO2: 84.73
+Average O3: 12.78
+Average SO2: 20.64
+Average PM2.5: 80.93
+Average PM10: 141.38
+Average US-EPA-INDEX: 4.00
+Average GB-DEFRA-INDEX: 10.00
+

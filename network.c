@@ -4,6 +4,7 @@
 #include <curl/curl.h>
 #include <time.h>
 #include "json_parser.h"
+#include "notification.h"
 
 // Struct for handling the response data from the API
 struct Memory {
@@ -82,12 +83,21 @@ void fetch_and_save_weather_data(const char *url, const char *filename) {
     char *pm10 = extract_json_value(json_data, "\"pm10\"");
     char *us_epa_index = extract_json_value(json_data, "\"us-epa-index\"");
     char *gb_defra_index = extract_json_value(json_data, "\"gb-defra-index\"");
+    double us__index = strtod(us_epa_index, NULL);
+    double gb__index = strtod(gb_defra_index, NULL);
 
     // Get current date in dd-mm-yyyy format
     time_t t = time(NULL);
     struct tm *currentDate = localtime(&t);
     char date[11];
     snprintf(date, sizeof(date), "%02d-%02d-%d", currentDate->tm_mday, currentDate->tm_mon + 1, currentDate->tm_year + 1900);
+    if (gb__index > 3.5) {
+        trigger_system_notification("Warning: GB Index is high!");
+    }
+    if (us__index > 10.2) {
+        trigger_system_notification("Warning: EPA Index is high!");
+    }
+
 
     // Format data as specified JSON structure
     FILE *file = fopen(filename, "a");
