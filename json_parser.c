@@ -81,5 +81,5 @@ void compute_daily_averages(const char *raw_filename, const char *processed_file
     fclose(output_file);
 
     printf("Count: %d\n", count);
-    printf("Daily averages for %s have been computed, written to %s, and email has been sent.\n", date, processed_filename);
+    printf("Daily averages for %s have been computed, written to %s\n", date, processed_filename);
 }
