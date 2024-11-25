@@ -3,8 +3,8 @@ CC = gcc
 CFLAGS = -Wall
 
 # Source files for main and main2
-SRCS_MAIN = main.c data_handler.c json_parser.c notification.c network.c
-SRCS_MAIN2 = main2.c data_handler.c json_parser.c notification.c network.c
+SRCS_MAIN = main.c json_parser.c notification.c network.c
+SRCS_MAIN2 = main2.c json_parser.c notification.c network.c
 
 # Object files
 OBJS_MAIN = $(SRCS_MAIN:.c=.o)

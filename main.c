@@ -1,5 +1,4 @@
 #include "json_parser.h"
-#include "data_handler.h"
 #include "notification.h"
 #include <string.h>
 #include <stdio.h>
