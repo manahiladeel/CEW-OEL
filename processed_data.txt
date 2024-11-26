@@ -58,3 +58,43 @@ Average PM10: 63.82
 Average US-EPA-INDEX: 3.00
 Average GB-DEFRA-INDEX: 7.33
 
+Date: 26-11-2024
+Average CO: 1335.70
+Average NO2: 60.59
+Average O3: 80.00
+Average SO2: 39.13
+Average PM2.5: 64.66
+Average PM10: 76.13
+Average US-EPA-INDEX: 3.50
+Average GB-DEFRA-INDEX: 8.50
+
+Date: 26-11-2024
+Average CO: 1076.33
+Average NO2: 34.63
+Average O3: 117.40
+Average SO2: 44.10
+Average PM2.5: 57.42
+Average PM10: 73.19
+Average US-EPA-INDEX: 3.20
+Average GB-DEFRA-INDEX: 7.20
+
+Date: 26-11-2024
+Average CO: 1277.12
+Average NO2: 41.75
+Average O3: 108.78
+Average SO2: 42.88
+Average PM2.5: 59.10
+Average PM10: 74.58
+Average US-EPA-INDEX: 3.11
+Average GB-DEFRA-INDEX: 7.33
+
+Date: 26-11-2024
+Average CO: 1359.41
+Average NO2: 45.26
+Average O3: 104.45
+Average SO2: 42.31
+Average PM2.5: 60.06
+Average PM10: 75.24
+Average US-EPA-INDEX: 3.09
+Average GB-DEFRA-INDEX: 7.45
+
