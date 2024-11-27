@@ -3,10 +3,7 @@
 
 #include <stddef.h>
 
-struct Memory {
-    char *response;
-    size_t size;
-};
+struct Memory;
 
 static size_t write_callback(void *data, size_t size, size_t nmemb, void *userp);
 
